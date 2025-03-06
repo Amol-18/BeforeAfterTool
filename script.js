@@ -1,48 +1,68 @@
-// Function to handle image preview
-function handleImagePreview(event, previewId) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const preview = document.getElementById(previewId);
-            preview.src = e.target.result;
-            preview.style.display = "block";
+const beforeImageInput = document.getElementById('before-image');
+const afterImageInput = document.getElementById('after-image');
+const canvas = document.getElementById('combined-canvas');
+const downloadBtn = document.getElementById('download-btn');
+const ctx = canvas.getContext('2d');
+
+let beforeImage, afterImage;
+
+// Function to load an image
+function loadImage(file, callback) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const img = new Image();
+        img.onload = function () {
+            callback(img);
         };
-        reader.readAsDataURL(file);
-    }
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
 }
 
-// Event listeners for file inputs
-document.getElementById('before-image').addEventListener('change', function (event) {
-    handleImagePreview(event, 'before-preview');
+// Function to generate the combined image
+function generateCombinedImage() {
+    if (!beforeImage || !afterImage) return;
+
+    const width = Math.max(beforeImage.width, afterImage.width);
+    const height = beforeImage.height + afterImage.height;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    // Draw Before Image
+    ctx.drawImage(beforeImage, 0, 0);
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText("Before Image", 10, 30);
+
+    // Draw After Image
+    ctx.drawImage(afterImage, 0, beforeImage.height);
+    ctx.fillText("After Image", 10, beforeImage.height + 30);
+
+    // Show canvas and enable download button
+    canvas.style.display = "block";
+    downloadBtn.disabled = false;
+}
+
+// Function to handle image upload
+beforeImageInput.addEventListener('change', (e) => {
+    loadImage(e.target.files[0], (img) => {
+        beforeImage = img;
+        if (afterImage) generateCombinedImage();
+    });
 });
 
-document.getElementById('after-image').addEventListener('change', function (event) {
-    handleImagePreview(event, 'after-preview');
+afterImageInput.addEventListener('change', (e) => {
+    loadImage(e.target.files[0], (img) => {
+        afterImage = img;
+        if (beforeImage) generateCombinedImage();
+    });
 });
 
-// Slider functionality
-const slider = document.querySelector('.slider');
-const afterImage = document.getElementById('after-preview');
-let isDragging = false;
-
-slider.addEventListener('mousedown', () => {
-    isDragging = true;
-});
-
-window.addEventListener('mouseup', () => {
-    isDragging = false;
-});
-
-window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-
-    const containerRect = document.querySelector('.comparison-container').getBoundingClientRect();
-    const offsetX = e.clientX - containerRect.left;
-    const percentage = (offsetX / containerRect.width) * 100;
-
-    if (percentage >= 0 && percentage <= 100) {
-        afterImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
-        slider.style.left = `${percentage}%`;
-    }
+// Function to download the combined image
+downloadBtn.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'before-after-comparison.png';
+    link.href = canvas.toDataURL();
+    link.click();
 });
