@@ -16,31 +16,28 @@
         <p>Upload your images to see the comparison!</p>
     </div>
     <div class="container">
-        <div class="image-container">
+        <div class="image-upload">
             <label for="before-image" class="upload-label">
                 <i class="fas fa-upload"></i>
                 <span>Upload Before Image</span>
                 <input type="file" id="before-image" accept="image/*">
             </label>
-            <div class="image-preview-container">
-                <img id="before-preview" src="#" alt="Before Image Preview" class="image-preview">
-                <span class="image-label">Before</span>
-            </div>
-        </div>
-        <div class="image-container">
             <label for="after-image" class="upload-label">
                 <i class="fas fa-upload"></i>
                 <span>Upload After Image</span>
                 <input type="file" id="after-image" accept="image/*">
             </label>
-            <div class="image-preview-container">
+        </div>
+        <div class="comparison-container">
+            <div class="image-wrapper">
+                <img id="before-preview" src="#" alt="Before Image Preview" class="image-preview">
                 <img id="after-preview" src="#" alt="After Image Preview" class="image-preview">
-                <span class="image-label">After</span>
+                <div class="slider"></div>
             </div>
         </div>
     </div>
     <footer>
-        <p>Made with ❤️ by [Amol katke]</p>
+        <p>Made with ❤️ by Amol Katke</p>
     </footer>
     <script src="script.js"></script>
 </body>
