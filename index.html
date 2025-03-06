@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF<!DOCTYPE html>
-<html lang="en">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Before and After Image Tool</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Google Fonts for better typography -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="header">
@@ -19,43 +18,30 @@
     <div class="container">
         <div class="image-container">
             <label for="before-image" class="upload-label">
-                <span>📷 Upload Before Image</span>
+                <i class="fas fa-upload"></i>
+                <span>Upload Before Image</span>
                 <input type="file" id="before-image" accept="image/*">
             </label>
-            <img id="before-preview" src="#" alt="Before Image Preview" class="image-preview">
+            <div class="image-preview-container">
+                <img id="before-preview" src="#" alt="Before Image Preview" class="image-preview">
+                <span class="image-label">Before</span>
+            </div>
         </div>
         <div class="image-container">
             <label for="after-image" class="upload-label">
-                <span>📷 Upload After Image</span>
+                <i class="fas fa-upload"></i>
+                <span>Upload After Image</span>
                 <input type="file" id="after-image" accept="image/*">
             </label>
-            <img id="after-preview" src="#" alt="After Image Preview" class="image-preview">
+            <div class="image-preview-container">
+                <img id="after-preview" src="#" alt="After Image Preview" class="image-preview">
+                <span class="image-label">After</span>
+            </div>
         </div>
     </div>
     <footer>
-        <p>Made with ❤️ by [Your Name]</p>
+        <p>Made with ❤️ by [Amol katke]</p>
     </footer>
-    <script src="script.js"></script>
-</body>
-</html>-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Before and After Image Tool</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>Before and After Image Tool</h1>
-    <div class="container">
-        <div class="image-container">
-            <label for="before-image">Before Image:</label>
-            <input type="file" id="before-image" accept="image/*">
-            <img id="before-preview" src="#" alt="Before Image Preview">
-        </div>
-        <div class="image-container">
-            <label for="after-image">After Image:</label>
-            <input type="file" id="after-image" accept="image/*">
-            <img id="after-preview" src="#" alt="After Image Preview">
-        </div>
-    </div>
     <script src="script.js"></script>
 </body>
 </html>
