@@ -31,12 +31,16 @@ function generateCombinedImage() {
 
     // Draw Before Image
     ctx.drawImage(beforeImage, 0, 0);
-    ctx.font = "20px Arial";
+    ctx.font = "20px Poppins";
     ctx.fillStyle = "white";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    ctx.strokeText("Before Image", 10, 30);
     ctx.fillText("Before Image", 10, 30);
 
     // Draw After Image
     ctx.drawImage(afterImage, 0, beforeImage.height);
+    ctx.strokeText("After Image", 10, beforeImage.height + 30);
     ctx.fillText("After Image", 10, beforeImage.height + 30);
 
     // Show canvas and enable download button
