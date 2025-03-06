@@ -66,52 +66,39 @@ input[type="file"] {
     display: none;
 }
 
-/* Comparison Container Styles */
-.comparison-container {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
+/* Output Container Styles */
+.output-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#combined-canvas {
+    max-width: 100%;
+    border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hide the canvas */
 }
 
-.image-wrapper {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 aspect ratio */
+#download-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
-.image-preview {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none; /* Initially hide the image */
+#download-btn:hover {
+    background-color: #3700b3;
 }
 
-#before-preview {
-    z-index: 1;
-}
-
-#after-preview {
-    z-index: 2;
-    clip-path: inset(0 50% 0 0); /* Initially show only half of the after image */
-}
-
-/* Slider Styles */
-.slider {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 2px;
-    height: 100%;
-    background-color: white;
-    z-index: 3;
-    cursor: ew-resize;
-    transform: translateX(-50%);
+#download-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
 /* Footer Styles */
